@@ -39,15 +39,15 @@ dist/
 events.out.tfevents.*
 wandb/
 
-# LaTeX build products (keep source and final PDFs)
-/Report/*.aux
-/Report/*.bbl
-/Report/*.blg
-/Report/*.fdb_latexmk
-/Report/*.fls
-/Report/*.out
-/Report/*.synctex.gz
-/Report/*.toc
+# LaTeX build products anywhere in the repository (keep source and final PDFs)
+*.aux
+*.bbl
+*.blg
+*.fdb_latexmk
+*.fls
+*.out
+*.synctex.gz
+*.toc
 
 # TRIPPY generated experiment artifacts
 /trippy/results/
