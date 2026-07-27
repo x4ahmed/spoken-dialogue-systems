@@ -1,0 +1,4 @@
+gensim
+scikit-learn
+matplotlib
+numpy==1.19.2

@@ -1,0 +1,14 @@
+[
+  {
+    "dir": "experiment_2026-06-28-05-07-47",
+    "legend": "gamma=0.90"
+  },
+  {
+    "dir": "experiment_2026-06-28-05-25-47",
+    "legend": "gamma=0.99"
+  },
+  {
+    "dir": "experiment_2026-06-28-14-33-09",
+    "legend": "gamma=0.99 lr=0.0003"
+  }
+]

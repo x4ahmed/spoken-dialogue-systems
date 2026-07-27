@@ -1,0 +1,28 @@
+{
+  "dataset_name": "simplemultiwoz21",
+  "data_dir": "unified_datasets/data/simplemultiwoz21/system/context_window_size_3",
+  "output_dir": "unified_datasets/output/simplemultiwoz21/system/context_window_size_3",
+  "zipped_model_path": "unified_datasets/output/simplemultiwoz21/system/context_window_size_3/bert-tiny_bertnlu_unified_simplemultiwoz21_user_context3.zip",
+  "log_dir": "unified_datasets/output/simplemultiwoz21/system/context_window_size_3/log",
+  "DEVICE": "cpu",
+  "seed": 2019,
+  "cut_sen_len": 40,
+  "use_bert_tokenizer": true,
+  "context_window_size": 3,
+  "model": {
+    "finetune": true,
+    "context": true,
+    "context_grad": true,
+    "pretrained_weights": "prajjwal1/bert-tiny",
+    "pretrained_tokenizer": "bert-base-uncased",
+    "check_step": 1000,
+    "max_step": 10000,
+    "batch_size": 64,
+    "learning_rate": 1e-4,
+    "adam_epsilon": 1e-8,
+    "warmup_steps": 0,
+    "weight_decay": 0.0,
+    "dropout": 0.1,
+    "hidden_units": 756
+  }
+}

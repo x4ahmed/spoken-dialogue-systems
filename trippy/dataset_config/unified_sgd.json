@@ -1,0 +1,170 @@
+{
+  "dataset_name": "sgd",
+  "class_types": [
+    "none",
+    "dontcare",
+    "copy_value",
+    "true",
+    "false",
+    "refer",
+    "inform",
+    "request"
+  ],
+  "slots": [],
+  "label_maps": {
+    "inexpensive": [
+      "cheap",
+      "lower price",
+      "lower range",
+      "cheaply",
+      "cheaper",
+      "cheapest",
+      "very affordable",
+      "low cost",
+      "low priced",
+      "low-cost",
+      "budget",
+      "bargain priced"
+    ],
+    "moderate": [
+      "moderately",
+      "reasonable",
+      "reasonably",
+      "affordable",
+      "afforadable",
+      "mid range",
+      "mid-range",
+      "priced moderately",
+      "decently priced",
+      "mid price",
+      "mid-price",
+      "mid priced",
+      "mid-priced",
+      "middle price",
+      "medium price",
+      "medium priced",
+      "not too expensive",
+      "not too cheap",
+      "not too costly",
+      "not very costly",
+      "economical",
+      "intermediate",
+      "average"
+    ],
+    "expensive": [
+      "high end",
+      "high-end",
+      "high class",
+      "high-class",
+      "high scale",
+      "high-scale",
+      "high price",
+      "high priced",
+      "higher price",
+      "above average",
+      "fancy",
+      "upscale",
+      "expensively",
+      "luxury",
+      "pricey",
+      "costly"
+    ],
+    "very expensive": [
+      "very fancy",
+      "lavish",
+      "extravagant"
+    ],
+    "0": [
+      "zero"
+    ],
+    "1": [
+      "one"
+    ],
+    "2": [
+      "two"
+    ],
+    "3": [
+      "three"
+    ],
+    "4": [
+      "four"
+    ],
+    "5": [
+      "five"
+    ],
+    "6": [
+      "six"
+    ],
+    "7": [
+      "seven"
+    ],
+    "8": [
+      "eight"
+    ],
+    "9": [
+      "nine"
+    ],
+    "10": [
+      "ten"
+    ],
+    "kitchen speaker": [
+      "kitchen"
+    ],
+    "bedroom speaker": [
+      "bedroom"
+    ],
+    "music": [
+      "concert"
+    ],
+    "sports": [
+      "match",
+      "matches",
+      "game",
+      "games"
+    ],
+    "standard": [
+      "medium-sized",
+      "intermediate"
+    ],
+    "compact": [
+      "small"
+    ],
+    "tv": [
+      "television",
+      "display"
+    ],
+    "full-size": [
+      "large",
+      "spacious"
+    ],
+    "park": [
+      "gardens",
+      "garden"
+    ],
+    "nature preserve": [
+      "natural spot",
+      "wildlife spot"
+    ],
+    "historical landmark": [
+      "historical spot"
+    ],
+    "tourist attraction": [
+      "place of interest"
+    ],
+    "theme park": [
+      "amusement park"
+    ],
+    "sports venue": [
+      "playground"
+    ],
+    "place of worship": [
+      "religious spot"
+    ],
+    "shopping area": [
+      "mall"
+    ],
+    "performing arts venue": [
+      "performance venue"
+    ]
+  }
+}

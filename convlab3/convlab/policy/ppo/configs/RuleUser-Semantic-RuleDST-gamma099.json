@@ -1,0 +1,45 @@
+{
+	"model": {
+		"load_path": "",
+		"use_pretrained_initialisation": true,
+		"pretrained_load_path": "c:/Users/Ahmed/Desktop/HHU REPOs/convlab3/pretrained_models/policy/experiment_2025-02-19-13-02-06/save/best_mle.pol.mdl",
+		"ppo_config": "ppo_config_gamma099.json",
+		"num_train_dialogues": 1000,
+		"seed": 0,
+		"epoch": 10,
+		"eval_frequency": 5,
+		"process_num": 4,
+		"sys_semantic_to_usr": false,
+		"num_eval_dialogues": 500
+	},
+	"vectorizer_sys": {
+		"uncertainty_vector_mul": {
+			"class_path": "convlab.policy.vector.vector_binary.VectorBinary",
+			"ini_params": {
+				"dataset_name": "simplemultiwoz21",
+				"use_masking": false,
+				"manually_add_entity_names": false,
+				"seed": 0
+			}
+		}
+	},
+	"nlu_sys": {},
+	"dst_sys": {
+		"RuleDST": {
+			"class_path": "convlab.dst.rule.simplemultiwoz21.RuleDST",
+			"ini_params": {}
+		}
+	},
+	"sys_nlg": {},
+	"nlu_usr": {},
+	"dst_usr": {},
+	"policy_usr": {
+		"RulePolicy": {
+			"class_path": "convlab.policy.rule.simplemultiwoz21.RulePolicy",
+			"ini_params": {
+				"character": "usr"
+			}
+		}
+	},
+	"usr_nlg": {}
+}
