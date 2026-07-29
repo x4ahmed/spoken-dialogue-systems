@@ -1,0 +1,28 @@
+{
+  "dataset_name": "simplemultiwoz21",
+  "data_dir": "unified_datasets/data/simplemultiwoz21/user/context_window_size_3",
+  "output_dir": "unified_datasets/output/simplemultiwoz21/user/context_window_size_3_exercise3",
+  "zipped_model_path": "unified_datasets/output/simplemultiwoz21/user/context_window_size_3_exercise3/bertnlu_unified_simplemultiwoz21_user_context3_exercise3.zip",
+  "log_dir": "unified_datasets/output/simplemultiwoz21/user/context_window_size_3_exercise3/log",
+  "DEVICE": "cuda",
+  "seed": 2019,
+  "cut_sen_len": 40,
+  "use_bert_tokenizer": true,
+  "context_window_size": 3,
+  "model": {
+    "finetune": true,
+    "context": true,
+    "context_grad": true,
+    "pretrained_weights": "prajjwal1/bert-mini",
+    "pretrained_tokenizer": "bert-base-uncased",
+    "check_step": 500,
+    "max_step": 5000,
+    "batch_size": 64,
+    "learning_rate": 1e-4,
+    "adam_epsilon": 1e-8,
+    "warmup_steps": 0,
+    "weight_decay": 0.0,
+    "dropout": 0.1,
+    "hidden_units": 756
+  }
+}

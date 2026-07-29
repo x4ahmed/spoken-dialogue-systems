@@ -17,6 +17,8 @@ def set_seed(seed):
 parser = argparse.ArgumentParser(description="Test a model.")
 parser.add_argument('--config_path',
                     help='path to config file')
+parser.add_argument('--data_key', choices=['val', 'test'], default='test',
+                    help='data split to evaluate (default: test)')
 
 
 if __name__ == '__main__':
@@ -46,12 +48,14 @@ if __name__ == '__main__':
     intent_vocab = json.load(open(os.path.join(data_dir, 'intent_vocab.json')))
     tag_vocab = json.load(open(os.path.join(data_dir, 'tag_vocab.json')))
     dataloader = Dataloader(intent_vocab=intent_vocab, tag_vocab=tag_vocab,
-                            pretrained_weights=config['model']['pretrained_weights'])
+                            pretrained_weights=config['model'].get(
+                                'pretrained_tokenizer', config['model']['pretrained_weights']))
     print('intent num:', len(intent_vocab))
     print('tag num:', len(tag_vocab))
     for data_key in ['val', 'test']:
         dataloader.load_data(json.load(open(os.path.join(data_dir, '{}_data.json'.format(data_key)))), data_key,
-                             cut_sen_len=0, use_bert_tokenizer=config['use_bert_tokenizer'])
+                             cut_sen_len=config['cut_sen_len'],
+                             use_bert_tokenizer=config['use_bert_tokenizer'])
         print('{} set size: {}'.format(data_key, len(dataloader.data[data_key])))
 
     if not os.path.exists(output_dir):
@@ -66,7 +70,7 @@ if __name__ == '__main__':
 
     batch_size = config['model']['batch_size']
 
-    data_key = 'test'
+    data_key = args.data_key
     predict_golden = {'intent': [], 'slot': [], 'overall': []}
     slot_loss, intent_loss = 0, 0
     for pad_batch, ori_batch, real_batch_size in dataloader.yield_batches(batch_size, data_key=data_key):
@@ -129,5 +133,6 @@ if __name__ == '__main__':
         print('\t Recall: %.2f' % (100 * recall))
         print('\t F1: %.2f' % (100 * F1))
 
-    output_file = os.path.join(output_dir, 'output.json')
+    output_name = 'output.json' if data_key == 'test' else 'output_{}.json'.format(data_key)
+    output_file = os.path.join(output_dir, output_name)
     json.dump(predict_golden['overall'], open(output_file, 'w', encoding='utf-8'), indent=2, ensure_ascii=False)

@@ -54,7 +54,18 @@ def evaluate(predict_result):
     ## consolidate the counted cases od TP FP FN to compute precision, recall, f1, and accurracy
     ## make sure to do this for all cases, i.e. overall, binary, categorical, and non-categorical
     ## Start of your code #################################################################################
+    for metric_name, counts in metrics.items():
+        tp, fp, fn = counts['TP'], counts['FP'], counts['FN']
+        precision = tp / (tp + fp) if tp + fp else 0
+        recall = tp / (tp + fn) if tp + fn else 0
+        f1 = 2 * precision * recall / (precision + recall) if precision + recall else 0
+        metrics[metric_name] = {
+            'precision': precision,
+            'recall': recall,
+            'f1': f1
+        }
 
+    metrics['accuracy'] = sum(acc) / len(acc) if acc else 0
     ## End of your code ###################################################################################
 
     return metrics

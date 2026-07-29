@@ -52,6 +52,27 @@ if __name__ == '__main__':
     ## TODO NLU_TASK1 data loading
     ## Start of your code #################################################################################
 
+    with open(os.path.join(data_dir, 'intent_vocab.json'), encoding='utf-8') as f:
+        intent_vocab = json.load(f)
+    with open(os.path.join(data_dir, 'tag_vocab.json'), encoding='utf-8') as f:
+        tag_vocab = json.load(f)
+
+    pretrained_tokenizer = config['model'].get(
+        'pretrained_tokenizer', config['model']['pretrained_weights'])
+    dataloader = Dataloader(intent_vocab=intent_vocab,
+                            tag_vocab=tag_vocab,
+                            pretrained_weights=pretrained_tokenizer)
+    print('intent num:', len(intent_vocab))
+    print('tag num:', len(tag_vocab))
+
+    for data_key in ['train', 'val', 'test']:
+        data_path = os.path.join(data_dir, '{}_data.json'.format(data_key))
+        with open(data_path, encoding='utf-8') as f:
+            data = json.load(f)
+        dataloader.load_data(data, data_key,
+                             cut_sen_len=config['cut_sen_len'],
+                             use_bert_tokenizer=config['use_bert_tokenizer'])
+        print('{} set size: {}'.format(data_key, len(dataloader.data[data_key])))
 
     ## End of your code ###################################################################################
 
@@ -109,6 +130,15 @@ if __name__ == '__main__':
         ## TODO NLU_TASK2 forward pass and loss computation
         ## Start of your code #################################################################################
 
+        slot_logits, intent_logits, slot_loss, intent_loss = model.forward(
+            word_seq_tensor,
+            word_mask_tensor,
+            tag_seq_tensor,
+            tag_mask_tensor,
+            intent_tensor,
+            context_seq_tensor,
+            context_mask_tensor)
+        loss = slot_loss + intent_loss
 
         ## End of your code ###################################################################################
 
