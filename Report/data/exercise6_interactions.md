@@ -4,8 +4,8 @@ Run date: 2026-07-29
 
 Structured evidence rerun: 2026-07-30
 
-Assistant: the instruction-tuned Codex assistant used in this report-writing
-session. The interface did not expose a more specific backend model identifier.
+Assistant: Codex Sol 5.6, the instruction-tuned assistant used in this
+report-writing session.
 
 Transaction boundary: the session had web search but no authenticated hotel
 reservation or payment tool. Consequently, a hotel search could be completed,
