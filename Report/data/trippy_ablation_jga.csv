@@ -1,0 +1,4 @@
+condition,validation_jga,test_jga
+Full features,0.436941,0.375940
+No auxiliary,0.412115,0.375000
+No history or auxiliary,0.413108,0.382519

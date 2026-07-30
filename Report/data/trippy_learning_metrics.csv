@@ -1,0 +1,31 @@
+condition,epoch,step,train_loss,dev_loss,dev_jga
+Full features,1,369,25.135016,,
+Full features,2,738,5.016771,4.258442,0.0397219
+Full features,3,1107,3.614259,,
+Full features,4,1476,2.999386,2.948853,0.286991
+Full features,5,1845,2.589372,,
+Full features,6,2214,2.333261,2.482741,0.388282
+Full features,7,2583,2.155819,,
+Full features,8,2952,2.033090,2.283741,0.412115
+Full features,9,3321,1.948730,,
+Full features,10,3690,1.888432,2.217968,0.436941
+No auxiliary,1,369,25.417045,,
+No auxiliary,2,738,5.300217,4.362072,0.0794439
+No auxiliary,3,1107,3.780252,,
+No auxiliary,4,1476,3.192840,3.138295,0.255214
+No auxiliary,5,1845,2.800883,,
+No auxiliary,6,2214,2.534975,2.626720,0.370407
+No auxiliary,7,2583,2.365199,,
+No auxiliary,8,2952,2.234516,2.458512,0.399206
+No auxiliary,9,3321,2.142115,,
+No auxiliary,10,3690,2.092206,2.384353,0.412115
+No history or auxiliary,1,369,24.332656,,
+No history or auxiliary,2,738,4.969001,4.144176,0.0496524
+No history or auxiliary,3,1107,3.567773,,
+No history or auxiliary,4,1476,3.001625,2.938698,0.216485
+No history or auxiliary,5,1845,2.649067,,
+No history or auxiliary,6,2214,2.413195,2.478961,0.339623
+No history or auxiliary,7,2583,2.254106,,
+No history or auxiliary,8,2952,2.135500,2.329320,0.419067
+No history or auxiliary,9,3321,2.049376,,
+No history or auxiliary,10,3690,2.005628,2.274035,0.413108
