@@ -44,8 +44,10 @@ def preprocess(dataset_name, speaker, save_dir, context_window_size):
                         word_start = i
                     if char_end == token_span[1]:
                         word_end = i + 1
-                if word_start == -1 and word_end == -1:
-                    # char span does not match word, maybe there is an error in the annotation, skip
+                if word_start == -1 or word_end == -1:
+                    # Both annotation boundaries must align with token boundaries.
+                    # Continuing after a partial match can write at index -1 or
+                    # create a truncated BIO span, so skip the complete act.
                     print('char span does not match word, skipping')
                     print('\t', 'utteance:', utterance)
                     print('\t', 'value:', utterance[char_start: char_end])

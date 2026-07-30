@@ -1,4 +1,4 @@
 act_type,validation_f1_percent,test_f1_percent
-Binary,89.7536,89.0511
-Categorical,85.2917,86.1267
-Non-categorical,87.1304,87.8458
+Binary,90.6946,88.2927
+Categorical,85.5252,86.5863
+Non-categorical,87.5544,88.2353

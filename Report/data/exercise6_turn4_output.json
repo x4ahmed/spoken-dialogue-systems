@@ -1,0 +1,50 @@
+{
+  "nlu": {
+    "acts": [
+      {"intent": "inform", "domain": "hotel", "slot": "date", "value": "2026-08-04"},
+      {"intent": "inform", "domain": "hotel", "slot": "rooms", "value": "3"},
+      {"intent": "affirm", "domain": "hotel", "slot": "proceed", "value": "yes"}
+    ],
+    "unsupported_instruction": null
+  },
+  "dst": {
+    "delta": {"booking": {"date": "2026-08-04", "rooms": 3, "confirmed": true}},
+    "state_after": {
+      "constraints": {
+        "city": "cambridge", "type": "hotel", "pricerange": "cheap",
+        "parking": "yes", "area": "dontcare"
+      },
+      "booking": {
+        "people": 6, "nights": 3, "day": "tuesday",
+        "date": "2026-08-04", "rooms": 3, "confirmed": true
+      },
+      "selected_entity_id": "28",
+      "requested_slots": [],
+      "transaction_status": "blocked_no_booking_tool"
+    }
+  },
+  "database": {
+    "operation": "lookup_selected_entity",
+    "query": {"id": "28"},
+    "raw_match_ids": ["28"],
+    "unique_match_ids": ["28"],
+    "selected_entity": {
+      "id": "28", "name": "the cambridge belfry",
+      "Ref": "00000028", "pricerange": "cheap", "parking": "yes"
+    }
+  },
+  "policy": {
+    "system_acts": [
+      {"intent": "inform", "domain": "hotel", "slot": "transaction_status", "value": "blocked_no_booking_tool"},
+      {"intent": "offer", "domain": "hotel", "slot": "handoff", "value": "secure_provider_flow"}
+    ],
+    "next_action": "explain_transaction_boundary_and_offer_secure_handoff",
+    "missing_slots": []
+  },
+  "tool": {
+    "name": null,
+    "status": "not_called",
+    "confirmation_reference": null
+  },
+  "nlg": "I found a database candidate, but live price and availability remain unverified and I cannot place a reservation in this session. 00000028 is a hotel record ID, not a booking confirmation. Please use the provider's secure booking flow."
+}

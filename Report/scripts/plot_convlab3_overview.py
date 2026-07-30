@@ -31,13 +31,14 @@ def rounded_box(ax, x, y, width, height, *, facecolor, edgecolor="#333333",
 
 
 def arrow(ax, start, end, *, color="#333333", style="-|>", linewidth=1.0,
-          connectionstyle="arc3", zorder=3):
+          linestyle="-", connectionstyle="arc3", zorder=3):
     patch = FancyArrowPatch(
         start,
         end,
         arrowstyle=style,
         mutation_scale=10,
         linewidth=linewidth,
+        linestyle=linestyle,
         color=color,
         connectionstyle=connectionstyle,
         shrinkA=1.5,
@@ -58,69 +59,83 @@ def main():
     })
 
     fig, ax = plt.subplots(figsize=(7.15, 2.75))
-    ax.set_xlim(0, 100)
-    ax.set_ylim(0, 44)
+    ax.set_xlim(-7, 107)
+    ax.set_ylim(0, 48)
     ax.axis("off")
 
     # Dataset layer.
-    rounded_box(ax, 20, 34, 60, 8, facecolor="#E8EEF5", edgecolor="#4C6680")
-    ax.text(50, 39.5, "Simple MultiWOZ 2.1 - unified format",
+    rounded_box(ax, 18, 37, 64, 8.5, facecolor="#E8EEF5", edgecolor="#4C6680")
+    ax.text(50, 42.8, "Simple MultiWOZ 2.1 - unified dataset",
             ha="center", va="center", fontsize=10, fontweight="bold")
-    ax.text(50, 36.5,
-            "turns  |  dialogue acts  |  dialogue states  |  ontology/database  |  responses",
+    ax.text(50, 39.4,
+            "utterances  |  dialogue acts  |  dialogue states  |  ontology + database",
             ha="center", va="center", fontsize=7.5)
-    arrow(ax, (50, 33.8), (50, 30.5), color="#4C6680", linewidth=1.1)
-    ax.text(52, 32.2, "standardized examples and supervision",
-            ha="left", va="center", fontsize=7, color="#4C6680")
+    arrow(
+        ax, (50, 36.8), (50, 33.5), color="#4C6680", linewidth=1.1,
+        linestyle="--",
+    )
+    ax.text(52, 35.2, "training/evaluation data and shared resources",
+            ha="left", va="center", fontsize=6.9, color="#4C6680")
 
     # ConvLab3 pipeline boundary.
     rounded_box(
-        ax, 7, 4.5, 86, 25.5,
+        ax, 5, 4.5, 90, 28,
         facecolor="#FFFFFF", edgecolor="#6B6B6B", linewidth=1.1, radius=1.1,
         zorder=1,
     )
-    ax.text(9, 28.2, "ConvLab3 PipelineAgent", ha="left", va="center",
+    ax.text(7, 30.6, "ConvLab3 PipelineAgent (Exercises 2 and 5)",
+            ha="left", va="center",
             fontsize=9, fontweight="bold", color="#333333")
 
     modules = [
-        (10, "NLU", "BERTNLU", "#CFE8F3"),
-        (31, "DST", "TripPy", "#D8EEDD"),
-        (52, "Policy", "PPO", "#F8E4BA"),
-        (73, "NLG", "template / model", "#EADCF0"),
+        (9, "NLU", "BERTNLU", "#CFE8F3"),
+        (30, "DST", "RuleDST", "#D8EEDD"),
+        (51, "Policy", "MLE / PPO", "#F8E4BA"),
+        (72, "NLG", "TemplateNLG", "#EADCF0"),
     ]
     for x, title, method, color in modules:
-        rounded_box(ax, x, 17, 17, 8, facecolor=color)
-        ax.text(x + 8.5, 22.2, title, ha="center", va="center",
+        rounded_box(ax, x, 19, 17, 8, facecolor=color)
+        ax.text(x + 8.5, 24.2, title, ha="center", va="center",
                 fontsize=8.1, fontweight="bold")
-        ax.text(x + 8.5, 19.3, method, ha="center", va="center", fontsize=7.5)
+        ax.text(x + 8.5, 21.3, method, ha="center", va="center", fontsize=7.5)
 
     # User input, module outputs, and response.
-    ax.text(1.0, 22.3, "User", ha="left", va="center", fontsize=8,
+    ax.text(0, 24.3, "User", ha="center", va="center", fontsize=8,
             fontweight="bold")
-    ax.text(1.0, 19.7, "utterance", ha="left", va="center", fontsize=7.3)
-    arrow(ax, (6.0, 21), (9.8, 21))
-    arrow(ax, (27.2, 21), (30.8, 21))
-    arrow(ax, (48.2, 21), (51.8, 21))
-    arrow(ax, (69.2, 21), (72.8, 21))
-    arrow(ax, (90.2, 21), (94.0, 21))
-    ax.text(99.0, 22.3, "System", ha="right", va="center", fontsize=8,
+    ax.text(0, 21.7, "utterance", ha="center", va="center", fontsize=7.3)
+    arrow(ax, (3.8, 23), (8.8, 23))
+    arrow(ax, (26.2, 23), (29.8, 23))
+    arrow(ax, (47.2, 23), (50.8, 23))
+    arrow(ax, (68.2, 23), (71.8, 23))
+    arrow(ax, (89.2, 23), (97.0, 23))
+    ax.text(102, 24.3, "System", ha="center", va="center", fontsize=8,
             fontweight="bold")
-    ax.text(99.0, 19.7, "response", ha="right", va="center", fontsize=7.3)
+    ax.text(102, 21.7, "response", ha="center", va="center", fontsize=7.3)
 
-    ax.text(29.0, 15.1, "dialogue acts", ha="center", va="center", fontsize=6.8)
-    ax.text(50.0, 15.1, "belief state", ha="center", va="center", fontsize=6.8)
-    ax.text(71.0, 15.1, "system act", ha="center", va="center", fontsize=6.8)
+    ax.text(28.0, 17.1, "user dialogue acts", ha="center", va="center", fontsize=6.6)
+    ax.text(49.0, 17.1, "dialogue state", ha="center", va="center", fontsize=6.6)
+    ax.text(70.0, 17.1, "system dialogue acts", ha="center", va="center", fontsize=6.6)
 
-    # The state queries the database; results inform policy selection.
-    rounded_box(ax, 41.5, 6.5, 17, 5.5, facecolor="#F0F0F0")
-    ax.text(50, 9.25, "Ontology + database", ha="center", va="center",
+    # TripPy was trained and evaluated independently, not inserted into the
+    # Exercise 2/5 interactive PipelineAgent.
+    rounded_box(ax, 30, 7.4, 17, 5.7, facecolor="#E9F5EC",
+                edgecolor="#5D8065", linewidth=0.9)
+    ax.text(38.5, 10.9, "TripPy (Exercise 4)", ha="center", va="center",
+            fontsize=7.1, fontweight="bold")
+    ax.text(38.5, 8.8, "evaluated separately", ha="center", va="center",
+            fontsize=6.4, color="#4F6C55")
+    arrow(ax, (38.5, 13.3), (38.5, 18.8), color="#5D8065",
+          linewidth=0.85, linestyle="--")
+
+    # The policy vectorizer queries the database using belief-state
+    # constraints; returned entities and counts inform policy selection and
+    # action lexicalization.
+    rounded_box(ax, 51, 7.4, 17, 5.7, facecolor="#F0F0F0")
+    ax.text(59.5, 10.9, "Database", ha="center", va="center",
             fontsize=7.5, fontweight="bold")
-    arrow(ax, (39.5, 16.8), (45.0, 12.2), linewidth=0.9,
-          connectionstyle="arc3,rad=0.08")
-    arrow(ax, (55.0, 12.2), (60.5, 16.8), linewidth=0.9,
-          connectionstyle="arc3,rad=0.08")
-    ax.text(39.5, 10.9, "constraints", ha="right", va="center", fontsize=6.6)
-    ax.text(60.5, 10.9, "DB result", ha="left", va="center", fontsize=6.6)
+    ax.text(59.5, 8.8, "query / match counts", ha="center", va="center",
+            fontsize=6.4, color="#555555")
+    arrow(ax, (59.5, 13.3), (59.5, 18.8), style="<->", linewidth=0.85)
 
     OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)
     fig.savefig(
